@@ -1,11 +1,9 @@
-import { useState } from 'react';
+import { BearCounter, Controls } from '@/components/BearCounter';
 import reactLogo from '/react.svg';
 import viteLogo from '/vite.svg';
-import './App.css';
+import '@/App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div className='flex justify-center items-center'>
@@ -21,9 +19,10 @@ function App() {
       <h1>Vite + React</h1>
 
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <div className='flex flex-col pb-4 items-center justify-center'>
+          <BearCounter />
+          <Controls />
+        </div>
 
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
