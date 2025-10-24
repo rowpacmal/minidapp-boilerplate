@@ -14,7 +14,8 @@
     "decimal.js": "^10.6.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "sqlstring": "^2.3.3"
+    "sqlstring": "^2.3.3",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
