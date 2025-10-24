@@ -1,73 +1,128 @@
-# React + TypeScript + Vite
+# MiniDapp Boilerplate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript + Vite boilerplate for building MiniDapps with MDS (MiniDapp System) integration.
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-19.1.1-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.7-646CFF.svg)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.16-38B2AC.svg)](https://tailwindcss.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Quick Start
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js (v18 or higher)
+- npm or yarn
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   ```bash
+   git clone <your-repo-url>
+   cd minidapp-boilerplate
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. **Install dependencies**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   Create a `.env` file in the root directory with the following variables:
+
+   ```env
+   # Development settings
+   VITE_DEBUG=true                    # Set to true to use MDS while running dev
+   VITE_DEBUG_HOST=127.0.0.1         # Your host address
+   VITE_DEBUG_MDS_PORT=9003          # MDS port (usually 9003 if your node runs on 9001)
+   VITE_DEBUG_UID=your-uid-here      # MiniDapp UID from the URL
+   ```
+
+   > **Getting your UID**: Visit `https://127.0.0.1:9003/SESSIONID/index.html?uid=UID` and copy the UID value.
+
+4. **Start development server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production**
+
+   ```bash
+   npm run build
+   ```
+
+6. **Create MDS package**
+   ```bash
+   npm run zip
+   ```
+
+## 📁 Project Structure
+
+```
+minidapp-boilerplate/
+├── src/                    # Source code
+│   ├── App.tsx            # Main App component
+│   ├── main.tsx           # Entry point
+│   └── styles/            # Global styles
+├── public/                # Static assets
+├── build/                 # Build output
+├── minidapp/              # MDS package output
+└── package.json           # Dependencies and scripts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command           | Description                              |
+| ----------------- | ---------------------------------------- |
+| `npm run dev`     | Start development server with hot reload |
+| `npm run build`   | Build for production                     |
+| `npm run preview` | Preview production build                 |
+| `npm run lint`    | Run ESLint                               |
+| `npm run zip`     | Build and create MDS package             |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔧 Development with MDS
+
+When developing with MDS integration:
+
+1. Set `VITE_DEBUG=true` in your `.env` file
+2. Configure your host and port settings
+3. Get your UID from the MDS interface
+4. Restart the dev server to connect to MDS
+
+## 🎨 Tech Stack
+
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **ESLint** - Code linting
+- **Gulp** - Task runner for MDS packaging
+
+## 📦 MDS Integration
+
+This boilerplate is specifically designed for MiniDapp development with MDS integration. The build process creates a `.mds.zip` package that can be deployed to the MiniDapp system.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Credits
+
+- **Elias** 💟 - Original creator
+- **dynamitesushi** 🐧 - Big love & credits
+
+---
+
+Made with ❤️ for the MiniDapp ecosystem
