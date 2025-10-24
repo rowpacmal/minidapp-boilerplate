@@ -35,13 +35,16 @@ A modern React + TypeScript + Vite boilerplate for building MiniDapps with MDS (
 
    ```env
    # Development settings
-   VITE_DEBUG=true                    # Set to true to use MDS while running dev
-   VITE_DEBUG_HOST=127.0.0.1         # Your host address
-   VITE_DEBUG_MDS_PORT=9003          # MDS port (usually 9003 if your node runs on 9001)
-   VITE_DEBUG_UID=your-uid-here      # MiniDapp UID from the URL
+   VITE_DEBUG=true                              # Set to true to use MDS while running dev
+   VITE_DEBUG_HOST=127.0.0.1                    # Your host address
+   VITE_DEBUG_MDS_PORT=9003                     # MDS port (usually 9003 if your node runs on 9001)
+   VITE_DEBUG_SESSIONID=your-session-id-here    # Session ID for MDS connection
+   VITE_DEBUG_UID=your-uid-here                 # MiniDapp UID from the URL
    ```
 
-   > **Getting your UID**: Visit `https://127.0.0.1:9003/SESSIONID/index.html?uid=UID` and copy the UID value.
+   > **Getting your SESSIONID and UID**: Visit `https://127.0.0.1:9003/SESSIONID/index.html?uid=UID` and copy the SESSIONID and UID value.
+   >
+   > **Note:** Use the SESSIONID and UID generated from your installed MiniDapp. To obtain these, first install the generated `.mds.zip` file (found in the `minidapp` folder) via the MDS interface, then use the values shown when opening your MiniDapp in the browser.
 
 4. **Start development server**
 
